@@ -1,12 +1,9 @@
-const user = {
-  name: "gy",
-  age: 77,
-  emails: ['gy@naver.com']
-}
+import _ from 'lodash'
 
-const copyUser = Object.assign({},user)
-copyUser.age = 33
-console.log(copyUser,user, user === copyUser)
-
-user.emails.push('yg@gmail.com')
-console.log(copyUser.emails === user.emails)
+const users = [
+  { 'user': 'barney',  'active': true },
+  { 'user': 'fred',    'active': false },
+  { 'user': 'pebbles', 'active': false }
+];
+const index1 = _.find(users, function(o,i) { return i === 1; });
+console.log(index1)

@@ -1,6 +1,5 @@
-export function getRandom() {
-  return Math.floor(Math.random() * 10)
+export const a = {
+  A: 'a',
+  B() {console.log('b')},
+  C: ['c']
 }
-export const dotaTow = ['Assasin','Cow','Slark']
-
-export default 77
