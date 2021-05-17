@@ -1,0 +1,102 @@
+body
+, html {
+  width: 100%;
+  height: 100%;
+}
+
+section.container {
+  width: 100%;
+  height: 100%;
+  background-image: url('./img/bg01.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CLOCK */
+.js-clock h1 {
+  font-size: 70px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px #fff, 0 0 10px #fff;
+}
+
+
+/* GREETING */
+.js-greeting {
+  height: 40px;
+}
+
+.js-greeting input {
+  height: inherit;
+  border-radius: 5px;
+  font-size: 30px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, .65);
+  box-shadow: 1px 1px 10px #000;
+  border: none;
+  outline: none;
+}
+.js-greeting input::placeholder {
+  text-align: center;
+}
+h2.js-greeting {
+  font-family: sans-serif;
+  color: #111;
+  height: 40px;
+  font-size: 35px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0 0 4px #fff;
+}
+h2.js-greeting span {
+  cursor: pointer;
+}
+h2.js-greeting span:hover {
+  text-decoration: underline;
+}
+.js-greeting.display-none {
+  display: none;
+}
+
+/* TODOLIST */
+.js-toDoList input {
+  margin-top: 20px;
+  font-size: 25px;
+  padding: 0 5px;
+  width: 400px;
+  outline: none;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px inset #fff;
+  color: #000;
+  text-shadow: 0 0 3px #fff,0 0 2px #fff;
+  font-weight: 600;
+}
+.js-toDoList input::placeholder {
+  text-align: center;
+  color: #333;
+  text-shadow: 0 0 3px #fff,0 0 2px #fff;
+  font-weight: 700;
+}
+.js-toDoList ul {
+  padding-top: 15px;
+  padding-left: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  text-shadow: 0 0 2px #fff, 0 1px 2px #fff;
+}
+.js-toDoList ul li {
+  height: 25px;
+  display: flex;
+  align-items: center;
+  width: 412px;
+}
+.js-toDoList ul li span {
+  flex-grow: 1;
+}
