@@ -1,28 +1,43 @@
-// form과 input과 ul에 넣어줘야하니 불러옴 ㅎㅎ
-
-const toDoForm = document.querySelector('.js-toDoList'),
+const toDoForm = document.querySelector('.js-toDoForm'),
   toDoInput = toDoForm.querySelector('input'),
-  toDoUl = toDoForm.querySelector('ul')
+  toDoUl = document.querySelector('.js-toDoList')
 
-const toDoList = []
+let toDoList = []
 
-function readToDo() {
-  
+function removeToDo(event) {
+  const li = event.target.parentNode
+  const liId = parseInt(li.id.replace('todo', ''))
+  toDoList = toDoList.filter((todo) => todo.id !== liId)
+  toDoUl.removeChild(li)
+  console.log(toDoList)
+  for (let i = 0; i < toDoList.length; i++) {
+    toDoList[i].id = i
+    toDoUl.childNodes[i + 1].id = 'todo' + i
+  }
+  localStorage.setItem('todolist', JSON.stringify(toDoList))
 }
 
-function setToDo(event) {
-  event.preventDefault()
+function readToDo() {
+  const getToDo = JSON.parse(localStorage.getItem('todolist'))
+  if (getToDo && getToDo.length !== []) {
+    getToDo.forEach((getToDo) => {
+      setToDo(getToDo.text)
+    })
+  }
+}
+
+function setToDo(text) {
   const li = document.createElement('li')
   const span = document.createElement('span')
   const delBtn = document.createElement('button')
-  const plusId = toDoList.length + 1
-  span.innerHTML = toDoInput.value
+  const plusId = toDoList.length
+  span.innerHTML = text
   delBtn.innerHTML = '❌'
+  delBtn.addEventListener('click', removeToDo)
   li.appendChild(span)
   li.appendChild(delBtn)
   li.id = 'todo' + plusId
   toDoUl.appendChild(li)
-  toDoInput.value = ''
   toDoList.push({
     text: span.innerHTML,
     id: plusId,
@@ -30,8 +45,14 @@ function setToDo(event) {
   localStorage.setItem('todolist', JSON.stringify(toDoList))
 }
 
+function submitToDo(event) {
+  event.preventDefault()
+  setToDo(toDoInput.value)
+  toDoInput.value = ''
+}
+
 function init() {
-  toDoForm.addEventListener('submit', setToDo)
-  
+  toDoForm.addEventListener('submit', submitToDo)
+  readToDo()
 }
 init()
